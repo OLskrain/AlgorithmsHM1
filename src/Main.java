@@ -3,7 +3,7 @@
  * Home work 1.
  * @author Ievlev Andrey.
  * @version Oct 2, 2018.
- * @Link 
+ * @Link https://github.com/OLskrain/AlgorithmsHM1.git
  */
 
 public class Main {
