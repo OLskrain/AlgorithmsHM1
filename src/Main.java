@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 /**
  * Home work 1.
@@ -13,13 +14,16 @@ public class Main {
         int [] list = {42,23,12,64,9,55};
         int [][] list2 = {{1,2,3},{4,5,6}};
 
-        System.out.println("Возведение в степень: " + binaryExponentiation(a,n));
+        System.out.println("Возведение в степень(используя четность): " + binaryExponentiation(a,n));
+        System.out.println("Возведение в степень (не рекурсия): " + power(a,n));
+        System.out.println("Возведение в степень (рекурсия): " + powerRec(a,n));
         System.out.println("Минимальный элемент массива: " + minimumElement(list));
         System.out.println("Среднее арифметическое значение массива: " + arithmeticalMean(list));
         System.out.println("Среднее арифметическое значение двумерного массива: " + arithmeticalMean2(list2));
+        System.out.println(Arrays.toString(list)); //выввод массива
 
     }
-    //Алгоритм возведения в степень. Сложность O(log n), так как у нас он работает по принципу "деления по полам"
+    //Алгоритм возведения в степень(используя четность). Сложность O(log n), так как у нас он работает по принципу "деления по полам"
     //это видно если описать метод на математические формулы:
     private static int binaryExponentiation(int a, int n) {
         if (n == 0)
@@ -33,6 +37,23 @@ public class Main {
             int b = binaryExponentiation(a, n/2);
             return b * b;
         }
+    }
+
+    //от препода Возведение в сепень(не рекурсия). Сложность O(n)
+    private static int power(int base, int sign){
+        int result = 1;
+        for (int i = 0; i < sign; i++) {
+            result *= base;
+        }
+        return result;
+    }
+
+    //от препода Возведение в степень (рекурсия). Сложность O(n)
+    private static int powerRec(int base, int sing){
+        if (sing == 0) {
+            return 1;
+        }
+        return powerRec(base, --sing) * base;
     }
 
     //Алгоритм поиска минимального значения. Сложность O(n), так как с увеличение элементов в массиве на "n" элементов
